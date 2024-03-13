@@ -6,10 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var formData = new FormData(form);
         var degrees = formData.get('userInput');
         var tempType = formData.get('temperature');
-        // if(!degrees){
-        //     console.log("please enter a value to convert")
-        //     return;
-        // }
+
         validate(degrees);
         var convertedValue = 0;
         if (tempType.valueOf() === "celsius") {
