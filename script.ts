@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', function (){
         const degrees = formData.get('userInput') as string;
         const tempType = formData.get('temperature') as string;
 
-        if(!degrees){
-            console.log("please enter a value to convert")
-            return;
-        }
+        // if(!degrees){
+        //     console.log("please enter a value to convert")
+        //     return;
+        // }
+
+        validate(degrees);
 
         let convertedValue: number = 0;
 
@@ -35,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function (){
 
     function celsiusToFahrenheit(celsius: number): number {
         return (celsius * (9/5)) + 32;
+    }
+
+    function validate(input: string){
+        const regex = /\D/;
+        if(regex.test(input) || input == ""){
+            conversion.innerHTML = "Please enter non-numeric characters to convert"
+        }
     }
 
 })

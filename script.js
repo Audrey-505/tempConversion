@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var formData = new FormData(form);
         var degrees = formData.get('userInput');
         var tempType = formData.get('temperature');
-        if (!degrees) {
-            console.log("please enter a value to convert");
-            return;
-        }
+        // if(!degrees){
+        //     console.log("please enter a value to convert")
+        //     return;
+        // }
+        validate(degrees);
         var convertedValue = 0;
         if (tempType.valueOf() === "celsius") {
             var num = parseInt(degrees);
@@ -26,5 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function celsiusToFahrenheit(celsius) {
         return (celsius * (9 / 5)) + 32;
+    }
+    function validate(input) {
+        var regex = /\D/;
+        if (regex.test(input) || input == "") {
+            conversion.innerHTML = "Please enter non-numeric characters to convert";
+        }
     }
 });
